@@ -1,0 +1,36 @@
+services:
+  
+  detection-api:
+    build:
+      context: ./detection-api-server
+      dockerfile: Dockerfile
+    ports:
+      - "8008:8008"  # Adjust the port as needed
+    networks:
+      - app-network
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
+    devices:
+      - /dev/bus/usb
+    device_cgroup_rules:
+      - 'c 189:* rmw'
+    restart: unless-stopped  
+
+
+  expression-api:
+    build:
+      context: ./TechLabs-Expressions-API
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      - detection-api
+    networks:
+      - app-network
+    volumes:
+      - ./TechLabs-Expressions-API:/app
+
+networks:
+  app-network:
+    driver: bridge
+
