@@ -19,7 +19,7 @@ clone_or_pull_repo "TechLabs-Expressions-API" "https://github.com/dodisbeaver/Te
 
 clone_or_pull_repo "detection-api-server" "https://github.com/dodisbeaver/detection-api-server.git"
 
-echo "Starting Docker containers..."
-docker compose up --build
+echo "Building Docker containers..."
+docker compose build
 
 echo "Setup complete!"
