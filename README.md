@@ -32,21 +32,29 @@ cd snow-modules
 
 This script will clone the repositories and install them in containers.
 
-
 ```bash
 chmod +x setup.sh
 ./setup.sh
 ```
 
-After this, you can start the modules with 
+After this, you can start the modules with the default depht AI camera environment:
 
 ```bash
 docker compose up
 ```
 
+If you do not have an depth ai camera. You can start the containers with
+
+```bash
+CAMERA=pedro docker compose up
+```
+
+This will use any camera attached to dev/video0
+You can modify the code inside the camera_pedro.py to use the correct /dev/videoX if this is not the camera you want to use.
+
 ### 3. Verify the Services are Running
 
-Check the status of your services:
+Check the status of your services in another terminal:
 
 ```bash
 docker compose ps
