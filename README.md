@@ -65,12 +65,15 @@ You should see both `detection-api` and `expression-api` services listed as runn
 ### 5. Accessing the Services
 
 - The Detection API will be available at `http://localhost:8008`
+This is just for inspection and fun.
+
 - The Expression API will be available at `http://localhost:5000`
+This is where the expressions are rendered.
 
 ## Additional Commands
 
 - To stop the services:
-Press ctrl+C in terminal window or 
+Press ctrl+C in terminal window or in another terminal window. Remember to be on the right folder path.
   ```bash
   docker compose down
   ```
