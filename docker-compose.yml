@@ -14,7 +14,7 @@ services:
     volumes:
       - ./detection-api-server:/app
       - /dev/bus/usb:/dev/bus/usb
-      - /dev/video0:/dev/video0
+      - ${VIDEO_DEVICE:-/dev/video0}:${VIDEO_DEVICE:-/dev/video0}
     devices:
       - /dev/bus/usb
     device_cgroup_rules:
