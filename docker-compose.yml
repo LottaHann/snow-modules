@@ -9,6 +9,7 @@ services:
       - "8008:8008"  # Adjust the port as needed
     environment:
       - CAMERA=${CAMERA:-opencv}
+      - MODULE=${MODULE:-0}
     networks:
       - app-network
     volumes:
@@ -19,7 +20,12 @@ services:
       - /dev/bus/usb
     device_cgroup_rules:
       - 'c 189:* rmw'
-    restart: unless-stopped  
+    restart: unless-stopped
+    # deploy:     # IF resources are too low.
+    #   resources:
+    #     limits:
+    #       cpus: '0.40'
+
 
 
   expression-api:

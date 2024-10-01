@@ -3,6 +3,7 @@
 # Initialize variables
 CAMERA=""
 MODULE=""
+VIDEO_DEVICE=""
 
 echo "Choose camera type: 1 = opencv or 2 = pedro"
 read choice
@@ -42,7 +43,8 @@ elif [ "$choice" == "2" ]; then
     read device_number
     
     if [ -e "/dev/video$device_number" ]; then
-        MODULE="/dev/video$device_number"
+        VIDEO_DEVICE="/dev/video$device_number"
+        MODULE="$device_number"
         echo "Selected camera module: $MODULE"
     else
         echo "Error: /dev/video$device_number does not exist."
@@ -57,5 +59,5 @@ echo "Starting Docker with environment variables..."
 if [ "$CAMERA" == "opencv" ]; then
     CAMERA="$CAMERA" docker compose up
 else
-    CAMERA="$CAMERA" MODULE="$MODULE" docker compose up
+    CAMERA="$CAMERA" MODULE="$MODULE" VIDEO_DEVICE="$VIDEO_DEVICE" docker compose up
 fi
