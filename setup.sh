@@ -15,9 +15,9 @@ clone_or_pull_repo() {
     fi
 }
 
-clone_or_pull_repo "TechLabs-Expressions-API" "https://github.com/dodisbeaver/TechLabs-Expressions-API.git"
+clone_or_pull_repo "TechLabs-Expressions-API" "https://github.com/LottaHann/TechLabs-Expressions-API.git"
 
-clone_or_pull_repo "detection-api-server" "https://github.com/dodisbeaver/detection-api-server.git"
+clone_or_pull_repo "detection-api-server" "https://github.com/LottaHann/detection-api-server.git"
 
 echo "Building Docker containers..."
 docker compose build

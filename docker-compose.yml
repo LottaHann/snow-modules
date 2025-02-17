@@ -1,12 +1,11 @@
 services:
-  
   detection-api:
     build:
       context: ./detection-api-server
       dockerfile: Dockerfile
     privileged: true
     ports:
-      - "8008:8008"  # Adjust the port as needed
+      - "0.0.0.0:8008:8008" 
     environment:
       - CAMERA=${CAMERA:-opencv}
       - MODULE=${MODULE:-0}
@@ -21,19 +20,13 @@ services:
     device_cgroup_rules:
       - 'c 189:* rmw'
     restart: unless-stopped
-    # deploy:     # IF resources are too low.
-    #   resources:
-    #     limits:
-    #       cpus: '0.40'
-
-
 
   expression-api:
     build:
       context: ./TechLabs-Expressions-API
       dockerfile: Dockerfile
     ports:
-      - "5000:5000"
+      - "0.0.0.0:5000:5000" 
     depends_on:
       - detection-api
     networks:
@@ -44,4 +37,3 @@ services:
 networks:
   app-network:
     driver: bridge
-
